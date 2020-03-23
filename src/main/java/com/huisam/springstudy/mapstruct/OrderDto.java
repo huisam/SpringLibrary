@@ -1,22 +1,15 @@
-package com.huisam.springstudy.mapper;
+package com.huisam.springstudy.mapstruct;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
-@Getter
 @Builder
-@EqualsAndHashCode
-public class Order implements Serializable {
-
-    public static final long serialVersionUID = 42L;
-
-    private Long id;
+@Getter
+class OrderDto {
 
     private String name;
 
@@ -25,6 +18,8 @@ public class Order implements Serializable {
     private Integer price;
 
     private String address;
+
+    private String img;
 
     private LocalDateTime orderedTime;
 }

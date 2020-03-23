@@ -1,6 +1,6 @@
 package com.huisam.springstudy.serializable;
 
-import com.huisam.springstudy.mapper.Order;
+import com.huisam.springstudy.mapstruct.Order;
 import org.apache.commons.lang3.SerializationUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

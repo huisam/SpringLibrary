@@ -1,6 +1,6 @@
 package com.huisam.springstudy.serializable;
 
-import com.huisam.springstudy.mapper.Order;
+import com.huisam.springstudy.mapstruct.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

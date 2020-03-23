@@ -1,4 +1,4 @@
-package com.huisam.springstudy.mapper;
+package com.huisam.springstudy.mapstruct;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,4 +1,4 @@
-package com.huisam.springstudy.mapper;
+package com.huisam.springstudy.mapstruct;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
