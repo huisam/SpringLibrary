@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 class OrderDto {
-    @NotNull @NotBlank
+    @ValidName
     private String name;
 
     @NotNull @NotBlank
