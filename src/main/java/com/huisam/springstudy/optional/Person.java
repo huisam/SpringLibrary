@@ -10,15 +10,15 @@ import static java.util.stream.Collectors.toSet;
 
 @AllArgsConstructor
 class Person {
-    private Optional<Car> car;
+    private Car car;
 
-    public Optional<Car> getCar() {
+    public Car getCar() {
         return car;
     }
 
     public static String getCarInsuranceName(Optional<Person> person) {
-        return person.flatMap(Person::getCar)
-                .flatMap(Car::getInsurance)
+        return person.map(Person::getCar)
+                .map(Car::getInsurance)
                 .map(Insurance::getName)
                 .orElse("Not Found");
     }

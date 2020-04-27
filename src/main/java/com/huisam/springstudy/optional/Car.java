@@ -2,13 +2,11 @@ package com.huisam.springstudy.optional;
 
 import lombok.AllArgsConstructor;
 
-import java.util.Optional;
-
 @AllArgsConstructor
 class Car {
-    private Optional<Insurance> insurance;
+    private Insurance insurance;
 
-    public Optional<Insurance> getInsurance() {
+    public Insurance getInsurance() {
         return insurance;
     }
 
