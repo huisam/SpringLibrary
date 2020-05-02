@@ -1,6 +1,6 @@
 package com.huisam.springstudy.objectmapper;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,5 +26,6 @@ class Order {
 
     private String address;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime orderedTime;
 }
