@@ -2,13 +2,13 @@ package com.huisam.springstudy.stream;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Builder
 @Getter
-@EqualsAndHashCode(of = "id")
+@Setter
 class Order {
     private Long id;
 
