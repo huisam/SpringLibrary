@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparing;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderTest {
@@ -82,5 +83,23 @@ class OrderTest {
                 .collect(Collectors.toList());
         /* then */
         assertThat(findOrders.size()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("Order List에서 이름순으로 찾기")
+    void order_test3() {
+        /* given */
+        Order order1 = new Order(1L, "hi", "book", 123, "seoul");
+        Order order2 = new Order(2L, "going", "notebook", 456, "seoul");
+        Order order3 = new Order(3L, "abc", "notebook", 456, "seoul");
+        List<Order> orders = List.of(order1, order2, order3);
+        /* when */
+        List<Order> findOrders = orders.stream()
+                .sorted(comparing(Order::getName))
+                .collect(Collectors.toList());
+        /* then */
+        assertThat(findOrders.get(0)).isEqualTo(order3);
+        assertThat(findOrders.get(1)).isEqualTo(order2);
+        assertThat(findOrders.get(2)).isEqualTo(order1);
     }
 }
