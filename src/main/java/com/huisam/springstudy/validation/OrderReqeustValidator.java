@@ -3,7 +3,7 @@ package com.huisam.springstudy.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class OrderDtoValidator implements ConstraintValidator<ValidName, String> {
+public class OrderReqeustValidator implements ConstraintValidator<ValidName, String> {
    public void initialize(ValidName constraint) {
    }
 

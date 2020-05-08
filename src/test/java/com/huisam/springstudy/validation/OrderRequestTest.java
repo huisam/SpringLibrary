@@ -6,12 +6,11 @@ import org.junit.jupiter.api.Test;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class OrderDtoTest {
+class OrderRequestTest {
 
     private Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
@@ -19,17 +18,14 @@ class OrderDtoTest {
     @DisplayName("Order Dto의 전부 null이고 안되는 경우 생성 테스트")
     void orderDto_create_test() {
         /* given */
-        final OrderDto orderDto = OrderDto.builder()
+        final OrderRequest orderRequest = OrderRequest.builder()
                 .name(null)
                 .product(null)
-                .price(-1)
-                .img(null)
                 .address(null)
-                .orderedTime(null)
                 .build();
 
         /* when */
-        Set<ConstraintViolation<OrderDto>> constraintViolations = validator.validate(orderDto);
+        Set<ConstraintViolation<OrderRequest>> constraintViolations = validator.validate(orderRequest);
         /* then */
         assertThat(constraintViolations)
                 .extracting(ConstraintViolation::getMessage)
@@ -40,17 +36,14 @@ class OrderDtoTest {
     @DisplayName("Order Dto의 price만 음수인 경우 테스트")
     void orderDto_create_test2() {
         /* given */
-        final OrderDto orderDto = OrderDto.builder()
+        final OrderRequest orderRequest = OrderRequest.builder()
                 .name("안녕")
                 .product("몰라")
-                .price(-1)
-                .img("hi.img")
                 .address("서울시")
-                .orderedTime(LocalDateTime.now())
                 .build();
 
         /* when */
-        Set<ConstraintViolation<OrderDto>> constraintViolations = validator.validate(orderDto);
+        Set<ConstraintViolation<OrderRequest>> constraintViolations = validator.validate(orderRequest);
         /* then */
         assertThat(constraintViolations)
                 .extracting(ConstraintViolation::getMessage)
@@ -61,17 +54,14 @@ class OrderDtoTest {
     @DisplayName("Order Dto의 이름이 공백인 경우 테스트")
     void orderDto_create_test3() {
         /* given */
-        final OrderDto orderDto = OrderDto.builder()
+        final OrderRequest orderRequest = OrderRequest.builder()
                 .name("")
                 .product("몰라")
-                .price(100)
-                .img("hi.img")
                 .address("서울시")
-                .orderedTime(LocalDateTime.now())
                 .build();
 
         /* when */
-        Set<ConstraintViolation<OrderDto>> constraintViolations = validator.validate(orderDto);
+        Set<ConstraintViolation<OrderRequest>> constraintViolations = validator.validate(orderRequest);
         /* then */
         assertThat(constraintViolations)
                 .extracting(ConstraintViolation::getMessage)

@@ -2,16 +2,16 @@ package com.huisam.springstudy.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.lang.annotation.*;
 
-@Constraint(validatedBy = OrderDtoValidator.class)
+@Constraint(validatedBy = OrderReqeustValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Documented
 @NotNull
-@NotEmpty
+@NotBlank
 public @interface ValidName {
     String message() default "2자 이상 4자 이하의 이름을 입력해주세요.";
 
