@@ -1,1 +1,11 @@
+amazon:
+  dynamodb:
+    endpoint: "http://localhost:8000"
 
+
+spring:
+  jpa:
+    show-sql: true
+
+  main:
+    allow-bean-definition-overriding: true
