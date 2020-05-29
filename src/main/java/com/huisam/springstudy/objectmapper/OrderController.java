@@ -1,21 +1,29 @@
 package com.huisam.springstudy.objectmapper;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import com.huisam.springstudy.mapstruct.Order;
+import com.huisam.springstudy.reactive.OrderRequestBody;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 
 @RestController
+@Log4j2
 public class OrderController {
-    @GetMapping("/orders")
-    public Order order() {
+
+    @PostMapping("/orders")
+    public Order order(@RequestBody @Valid OrderRequestBody body) {
+        log.info("Order Controller : {}", body);
         return Order.builder()
                 .id(1L)
-                .name("huisam")
+                .name(body.getName())
                 .address("seoul")
-                .orderedTime(LocalDateTime.now())
                 .price(123)
                 .product("computer")
+                .orderedTime(LocalDateTime.now())
                 .build();
     }
 }

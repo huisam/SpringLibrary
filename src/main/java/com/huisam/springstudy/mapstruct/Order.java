@@ -1,15 +1,14 @@
 package com.huisam.springstudy.mapstruct;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Builder
 @EqualsAndHashCode
 public class Order implements Serializable {
