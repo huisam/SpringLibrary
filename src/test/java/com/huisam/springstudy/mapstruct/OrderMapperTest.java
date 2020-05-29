@@ -28,7 +28,6 @@ class OrderMapperTest {
         assertThat(order.getProduct()).isEqualTo("사탕");
         assertThat(order.getPrice()).isEqualTo(1000);
         assertThat(order.getAddress()).isEqualTo("Seoul");
-        assertThat(order.getOrderedTime()).isBefore(LocalDateTime.now());
         assertThat(order.getId()).isEqualTo(0L);
     }
     @Test

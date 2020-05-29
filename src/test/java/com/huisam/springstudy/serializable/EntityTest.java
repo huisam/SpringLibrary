@@ -5,8 +5,6 @@ import org.apache.commons.lang3.SerializationUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -21,7 +19,6 @@ class EntityTest {
                 .address("Seoul")
                 .product("사과")
                 .price(123)
-                .orderedTime(LocalDateTime.now())
                 .build();
         Entity entity = Entity.builder()
                 .id("huisam")
@@ -50,7 +47,6 @@ class EntityTest {
                 .address("Seoul")
                 .product("사과")
                 .price(123)
-                .orderedTime(LocalDateTime.now())
                 .build();
         Order afterOrder;
 
