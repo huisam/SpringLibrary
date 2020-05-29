@@ -1,47 +1,45 @@
-package com.huisam.springstudy.objectmapper;
+package com.huisam.springstudy.reactive;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huisam.springstudy.mapstruct.Order;
-import com.huisam.springstudy.reactive.OrderRequestBody;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @AutoConfigureWebTestClient
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class WebClientControllerTest {
 
-    private WebTestClient webTestClient;
-
     @Autowired
-    private WebClient webClient;
+    private WebTestClient webTestClient;
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @BeforeEach
-    void setUp(ApplicationContext applicationContext) {
+    void setUp() {
         webTestClient = WebTestClient
-                .bindToApplicationContext(applicationContext)
+                .bindToServer()
+                .baseUrl("http://localhost:8080")
                 .build();
     }
 
     @Test
-    @DisplayName("테스트이름")
-    void mock_test() throws Exception {
+    @DisplayName("WebTestClient 테스트")
+    void web_test_client_test() throws Exception {
         /* given */
         final String body = objectMapper.writeValueAsString(new OrderRequestBody("hi"));
         /* when */
-        webTestClient.post()
+        final Order order = webTestClient.post()
                 .uri("/react")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(body), String.class)
@@ -52,6 +50,7 @@ class WebClientControllerTest {
                 .returnResult()
                 .getResponseBody();
         /* then */
-
+        assertThat(order).isNotNull();
+        assertThat(order.getName()).isEqualTo("hi");
     }
 }
