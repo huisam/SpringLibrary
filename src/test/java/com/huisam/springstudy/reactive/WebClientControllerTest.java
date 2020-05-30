@@ -2,7 +2,6 @@ package com.huisam.springstudy.reactive;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huisam.springstudy.mapstruct.Order;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @AutoConfigureWebTestClient
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class WebClientControllerTest {
 
     @Autowired
@@ -24,14 +23,6 @@ class WebClientControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    @BeforeEach
-    void setUp() {
-        webTestClient = WebTestClient
-                .bindToServer()
-                .baseUrl("http://localhost:8080")
-                .build();
-    }
 
     @Test
     @DisplayName("WebTestClient 테스트")
