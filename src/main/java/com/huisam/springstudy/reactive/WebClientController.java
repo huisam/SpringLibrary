@@ -23,8 +23,7 @@ public class WebClientController {
 
     private final Environment environment;
 
-    @PostMapping(value = "/react",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(value = "/react", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Order react(@RequestBody @Valid OrderRequestBody body) {
         log.info("React name : {}", body);
@@ -32,6 +31,8 @@ public class WebClientController {
 
         return webClient.post()
                 .uri(uriBuilder -> uriBuilder.path("/orders")
+                        .scheme("http")
+                        .host("localhost")
                         .port(port)
                         .build()
                 )

@@ -26,7 +26,6 @@ public class WebClientConfig {
                 );
         ClientHttpConnector connector = new ReactorClientHttpConnector(HttpClient.from(tcpClient));
         return WebClient.builder()
-                .baseUrl("http://localhost:8080")
                 .clientConnector(connector)
                 .build();
     }
