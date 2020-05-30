@@ -20,6 +20,8 @@ class Order {
 
     private String address;
 
+    private Status status;
+
     public String nameWithProduct(TwoParameterFunction<String, String, String> function) {
         return function.apply(name, product);
     }

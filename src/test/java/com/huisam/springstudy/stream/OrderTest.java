@@ -15,7 +15,7 @@ class OrderTest {
     @DisplayName("Order에서 custom Function 테스트")
     void order_function_test() {
         /* given */
-        Order order = new Order(1L, "hi", "book", 123, "seoul");
+        Order order = new Order(1L, "hi", "book", 123, "seoul", Status.CREATED);
         /* when */
         String nameWithProduct = order.nameWithProduct((name, book) -> name + " " + book);
         /* then */
@@ -56,8 +56,8 @@ class OrderTest {
     @DisplayName("Order List에서 g로 시작하는 이름 찾기")
     void order_test() {
         /* given */
-        Order order1 = new Order(1L, "hi", "book", 123, "seoul");
-        Order order2 = new Order(2L, "going", "notebook", 456, "seoul");
+        Order order1 = new Order(1L, "hi", "book", 123, "seoul", Status.CREATED);
+        Order order2 = new Order(2L, "going", "notebook", 456, "seoul", Status.CREATED);
         List<Order> orders = List.of(order1, order2);
         /* when */
         Order findOrder = orders.stream()
@@ -72,9 +72,9 @@ class OrderTest {
     @DisplayName("Order List에서 중복을 제거하고 g로 시작하는 이름 찾기")
     void order_test2() {
         /* given */
-        Order order1 = new Order(1L, "hi", "book", 123, "seoul");
-        Order order2 = new Order(2L, "going", "notebook", 456, "seoul");
-        Order order3 = new Order(2L, "gg", "notebook", 456, "seoul");
+        Order order1 = new Order(1L, "hi", "book", 123, "seoul", Status.CREATED);
+        Order order2 = new Order(2L, "going", "notebook", 456, "seoul", Status.CREATED);
+        Order order3 = new Order(2L, "gg", "notebook", 456, "seoul", Status.CREATED);
         List<Order> orders = List.of(order1, order2, order3);
         /* when */
         List<Order> findOrders = orders.stream()
@@ -89,9 +89,9 @@ class OrderTest {
     @DisplayName("Order List에서 이름순으로 찾기")
     void order_test3() {
         /* given */
-        Order order1 = new Order(1L, "hi", "book", 123, "seoul");
-        Order order2 = new Order(2L, "going", "notebook", 456, "seoul");
-        Order order3 = new Order(3L, "abc", "notebook", 456, "seoul");
+        Order order1 = new Order(1L, "hi", "book", 123, "seoul", Status.CREATED);
+        Order order2 = new Order(2L, "going", "notebook", 456, "seoul", Status.CREATED);
+        Order order3 = new Order(3L, "abc", "notebook", 456, "seoul", Status.CREATED);
         List<Order> orders = List.of(order1, order2, order3);
         /* when */
         List<Order> findOrders = orders.stream()
