@@ -1,18 +1,16 @@
 package com.huisam.springstudy.objectmapper;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Getter
+@EqualsAndHashCode(exclude = "orderedTime")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class Order {
 
@@ -26,6 +24,17 @@ class Order {
 
     private String address;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime orderedTime;
+
+    @JsonCreator
+    @Builder
+    public Order(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("product") String product,
+                 @JsonProperty("price") Integer price, @JsonProperty("address") String address, @JsonProperty("orderedTime") LocalDateTime orderedTime) {
+        this.id = id;
+        this.name = name;
+        this.product = product;
+        this.price = price;
+        this.address = address;
+        this.orderedTime = orderedTime;
+    }
 }
