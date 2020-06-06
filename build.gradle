@@ -1,8 +1,8 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'net.ltgt.apt' version '0.20'
-    id "io.freefair.lombok" version "5.0.0-rc6"
+    id "com.moowork.node" version "1.3.1"
     id 'java'
 }
 
@@ -29,6 +29,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 
     implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.11.789'
     implementation 'com.github.derjust:spring-data-dynamodb:5.1.0'
@@ -36,14 +37,12 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.9'
     runtimeOnly 'com.h2database:h2'
 
-    compileOnly 'org.mapstruct:mapstruct:1.3.1.Final'
+    implementation 'org.mapstruct:mapstruct:1.3.1.Final'
     annotationProcessor "org.mapstruct:mapstruct-processor:1.3.1.Final"
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-    testCompileOnly 'org.projectlombok:lombok:1.18.12'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 
     testImplementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.10.4'
     testImplementation 'org.xmlunit:xmlunit-assertj:2.6.4'
@@ -58,3 +57,26 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+// setting for FrontEnd
+node {
+    version = '12.13.1'
+    npmVersion = '6.12.1'
+    workDir = file('./src/frontend')
+    npmWorkDir = file('./src/frontend')
+    nodeModulesDir = file('./src/frontend')
+}
+
+task setUp(type: NpmTask) {
+    description = 'Install Node.js packages'
+    args = ['install']
+    inputs.files file('package.json')
+    outputs.files file('node_modules')
+}
+
+task buildFrontEnd(type: NpmTask, dependsOn: setUp) {
+    description = 'Build vue.js'
+    args = ['run', 'build']
+}
+
+processResources.dependsOn 'buildFrontEnd'
