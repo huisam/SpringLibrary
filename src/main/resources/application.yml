@@ -6,6 +6,23 @@ amazon:
 spring:
   jpa:
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
   main:
     allow-bean-definition-overriding: true
+  mvc:
+    log-request-details: true
+server:
+  port: 9000
+
+logging:
+  file:
+    path: logs
+  level:
+    com:
+      huisam: info
+    org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE
+
+

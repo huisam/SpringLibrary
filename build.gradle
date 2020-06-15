@@ -56,6 +56,7 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'io.projectreactor:reactor-tools'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
