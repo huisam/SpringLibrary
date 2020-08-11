@@ -29,4 +29,10 @@ public class AopController {
     public ResponseEntity<String> ok() {
         return ResponseEntity.ok("ok");
     }
+
+    @ExceptionCatcher
+    @GetMapping("/error")
+    public ResponseEntity<String> error() {
+        throw new IllegalArgumentException();
+    }
 }

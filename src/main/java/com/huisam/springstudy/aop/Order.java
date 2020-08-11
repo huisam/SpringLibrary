@@ -11,16 +11,16 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 class Order {
-    private Long id;
+    private final Long id;
 
-    private String name;
+    private final String name;
 
-    private String product;
+    private final String product;
 
-    private Integer price;
+    private final Integer price;
 
-    private String address;
+    private final String address;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime orderedTime;
+    private final LocalDateTime orderedTime;
 }
