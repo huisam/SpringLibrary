@@ -10,7 +10,7 @@ apply plugin: 'net.ltgt.apt-idea'
 
 
 group = 'com.huisam'
-version = '0.0.1-SNAPSHOT'
+version = 'huisam.1'
 sourceCompatibility = '14'
 
 configurations {
@@ -34,9 +34,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
     implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.11.789'
     implementation 'com.github.derjust:spring-data-dynamodb:5.1.0'
+
+    implementation platform('software.amazon.awssdk:bom:2.13.72')
+    implementation 'software.amazon.awssdk:s3'
+    implementation 'software.amazon.awssdk:netty-nio-client'
+    implementation 'software.amazon.awssdk:cloudwatch-metric-publisher:2.13.52-PREVIEW'
 
     implementation 'org.apache.commons:commons-lang3:3.9'
     runtimeOnly 'com.h2database:h2'
