@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderRequestTest {
 
-    private Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+    private final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     @Test
     @DisplayName("Order Dto의 전부 null이고 안되는 경우 생성 테스트")

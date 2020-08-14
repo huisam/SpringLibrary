@@ -11,7 +11,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderRequestValidatorTest {
-    private Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+    private final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     @Test
     @DisplayName("Order의 이름이 0글자이면 검증 하는 테스트")
