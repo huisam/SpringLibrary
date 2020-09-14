@@ -2,7 +2,6 @@ amazon:
   dynamodb:
     endpoint: "http://localhost:8000"
 
-
 spring:
   jpa:
     show-sql: true
@@ -10,19 +9,24 @@ spring:
       hibernate:
         format_sql: true
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+
   main:
     allow-bean-definition-overriding: true
   mvc:
     log-request-details: true
+  mustache:
+    suffix: .html
 server:
   port: 9000
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
 
 logging:
-  file:
-    path: logs
-  level:
-    com:
-      huisam: info
-    org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE
-
-
+  config: classpath:log4j2.xml
