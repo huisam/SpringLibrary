@@ -11,15 +11,15 @@ import java.time.LocalDateTime;
 @Getter
 class OrderDto {
 
-    private String name;
+    private final String name;
 
-    private String product;
+    private final String product;
 
-    private Integer price;
+    private final Integer price;
 
-    private String address;
+    private final String address;
 
-    private String img;
+    private final String img;
 
-    private LocalDateTime orderedTime;
+    private final LocalDateTime orderedTime;
 }

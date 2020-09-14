@@ -14,17 +14,17 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class Order {
 
-    private Long id;
+    private final Long id;
 
-    private String name;
+    private final String name;
 
-    private String product;
+    private final String product;
 
-    private Integer price;
+    private final Integer price;
 
-    private String address;
+    private final String address;
 
-    private LocalDateTime orderedTime;
+    private final LocalDateTime orderedTime;
 
     @JsonCreator
     @Builder

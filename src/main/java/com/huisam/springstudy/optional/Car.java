@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 class Car {
-    private Insurance insurance;
+    private final Insurance insurance;
 
     public Insurance getInsurance() {
         return insurance;

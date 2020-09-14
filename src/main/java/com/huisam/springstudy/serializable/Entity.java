@@ -14,9 +14,9 @@ public class Entity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String id;
+    private final String id;
 
-    private String password;
+    private final String password;
 
-    private Order Order;
+    private final Order Order;
 }

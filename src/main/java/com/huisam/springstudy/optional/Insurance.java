@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 @EqualsAndHashCode
 class Insurance {
-    private String name;
+    private final String name;
 
     public String getName() {
         return name;

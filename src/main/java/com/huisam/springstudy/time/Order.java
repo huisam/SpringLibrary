@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 class Order {
-    private Long id;
+    private final Long id;
 
-    private String product;
+    private final String product;
 
-    private LocalDateTime orderedTime;
+    private final LocalDateTime orderedTime;
 
 }

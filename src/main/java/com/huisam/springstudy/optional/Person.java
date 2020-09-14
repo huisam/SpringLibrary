@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.toSet;
 
 @AllArgsConstructor
 class Person {
-    private Car car;
+    private final Car car;
 
     public Car getCar() {
         return car;
