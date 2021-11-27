@@ -5,10 +5,8 @@ import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 @Builder
 @EqualsAndHashCode
 public class Order implements Serializable {
